@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Анкеты по увлечениям</title>
 </head>
 <body>
-
+<!-- создает класс container-->
+    <div class="container">
+        <h1>Анкеты по увлечениям</h1>
+        <!--создает форму с методом POST, чтобы отправлять данные из этой формы-->
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="name">Ваше имя:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Ваш возраст:</label>
+                <input type="text" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Город проживания:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="hobby">Ваши увлечения (хобби):</label>
+                <textarea class="form-control" id="hobby" name="hobby" rows="3" required></textarea>
+            </div>
+            <button type='submit' class='btn btn-primary'> Отправить анкету</button>
+        </form>
+        <hr>
+       <!--использует цикл for, чтобы иметь возможность публиковать посты-->
+        <h2>Анкеты</h2>
+        {% for blank in blanks %}
+       <!--создает отдельный div, внутри которого записываются заголовки и текст постов-->
+        <div class="post">
+            <h4>{{ blank.name }}</h4>
+            <p>Возраст: {{ blank.age }}</p>
+            <p>Горд проживания: {{ blank.city }}</p>
+            <p>Увлечения: {{ blank.hobby }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <!--подключает Bootstrap для стилизации-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
