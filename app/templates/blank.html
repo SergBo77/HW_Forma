@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Подключение стилей из файла style.css  для улучшения внешнего вида -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <!-- Подключение скриптов и стилей Bootstrap для улучшения внешнего вида -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Анкеты по увлечениям</title>
 </head>
 <body>
 <!-- создает класс container-->
     <div class="container">
-        <h1>Анкеты по увлечениям</h1>
+        <h1>Анкеты по увлечениям</h1> <!-- Заголовок страницы -->
         <!--создает форму с методом POST, чтобы отправлять данные из этой формы-->
         <form method="POST" action="/">
+            <!-- Поля формы для ввода данных -->
             <div class="form-group">
                 <label for="name">Ваше имя:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -33,16 +36,17 @@
         </form>
         <hr>
        <!--использует цикл for, чтобы иметь возможность публиковать посты-->
-        <h2>Анкеты</h2>
+        <h2>Анкеты</h2> <!-- Заголовок для списка анкет -->
         {% for blank in blanks %}
        <!--создает отдельный div, внутри которого записываются заголовки и текст постов-->
         <div class="post">
+            <!-- Отображение данных анкеты -->
             <h4>{{ blank.name }}</h4>
             <p>Возраст: {{ blank.age }}</p>
             <p>Горд проживания: {{ blank.city }}</p>
             <p>Увлечения: {{ blank.hobby }}</p>
         </div>
-        {% endfor %}
+        {% endfor %} <!-- Завершение цикла -->
     </div>
     <!--подключает Bootstrap для стилизации-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
